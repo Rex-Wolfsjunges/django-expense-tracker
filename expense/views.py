@@ -1,6 +1,6 @@
-from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.db.models import Sum
+from datetime import date, timedelta
 from .forms import ExpenseForm
 from .models import Expense
 
@@ -13,10 +13,26 @@ def index(request):
 
     expenses = Expense.objects.all()
     total_expenses = expenses.aggregate(Sum('amount'))
+
+    last_year = date.today() - timedelta(days=365)
+    data = Expense.objects.filter(date__gt=last_year)
+    yearly_sum = data.aggregate(Sum('amount'))
+
+    last_month = date.today() - timedelta(days=30)
+    data = Expense.objects.filter(date__gt=last_month)
+    monthly_sum = data.aggregate(Sum('amount'))
+
+    last_week = date.today() - timedelta(days=7)
+    data = Expense.objects.filter(date__gt=last_week)
+    weekly_sum = data.aggregate(Sum('amount'))
+
     expense_form = ExpenseForm()
     context = {
         "expenses": expenses,
         "total_expenses": total_expenses,
+        "yearly_sum": yearly_sum,
+        "monthly_sum": monthly_sum,
+        "weekly_sum": weekly_sum,
         "expense_form": expense_form,
     }
     return render(request, "expense/index.html", context)
