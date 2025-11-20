@@ -12,6 +12,14 @@
   <title>Django Expense Tracker</title>
 </head>
 <body>
+  <nav class="shadow-lg p-5">
+    <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <a class="flex" href="#">
+        <img class="h-10 mr-3" src="{% static 'img/wallet.png' %}" alt="">
+        <span class="self-center text-xl font-semibold">Expense Tracker</span>
+      </a>
+    </div>
+  </nav>
   {% block body %}
   {% endblock %}
 </body>
