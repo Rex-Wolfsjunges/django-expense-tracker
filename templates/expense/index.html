@@ -42,7 +42,7 @@
         <span class="font-bold">{{ expense.category }}</span>
         <span class="font-bold">{{ expense.amount }}</span>
         <span class="font-bold">{{ expense.date }}</span>
-        <span class="font-bold"><a href="">Edit</a></span>
+        <span class="font-bold"><a href="{% url 'expense:edit' expense.id %}">Edit</a></span>
         <span class="font-bold"><a href="">Delete</a></span>
       </div>
     {% endfor %}
