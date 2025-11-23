@@ -1,1 +1,1 @@
-web: gunicorn expense_tracker.wsgi --log-file -
+web: gunicorn django_expense_tracker.wsgi --log-file -
