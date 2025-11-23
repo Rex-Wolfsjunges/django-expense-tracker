@@ -95,7 +95,7 @@
         <span>Past 30 days daily sum epenses</span>
       </div>
       <hr>
-      <div id="30-day-table">
+      <div id="daily-sum-table">
         {% for daily_sum in daily_sums %}
           <div class="flex flex-wrap px-20 py-5">
             <span>{{ daily_sum.date }}</span>
@@ -112,7 +112,7 @@
         <span>Categorical epenses</span>
       </div>
       <hr>
-      <div id="30-day-table">
+      <div id="cat-sum-table">
         {% for categorical_sum in categorical_sums %}
           <div class="flex flex-wrap px-20 py-5">
             <span>{{ categorical_sum.category }}</span>
@@ -125,4 +125,17 @@
     </div>
   </div>
 
+  <div class="flex">
+    <div class="w-1/2 shadow-lg ml-10">
+      <h1 class="m-10">Expense spread across categories</h1>
+      <canvas id="category-chart" class="m-10" width="400" height="400"></canvas>
+    </div>
+    <div class="w-1/2 shadow-lg ml-10">
+      <h1 class="m-10">Daily expenses sum</h1>
+      <canvas id="daily-chart" class="m-10" width="400" height="400"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
+  <script src="{% static 'js/index.js' %}"></script>
 {% endblock %}
