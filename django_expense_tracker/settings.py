@@ -77,9 +77,17 @@ WSGI_APPLICATION = "django_expense_tracker.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3")
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ExpenseTracker',
+        'USER': 'koyeb-adm',
+        'PASSWORD': 'npg_OR2CD4IWmzXT',
+        'HOST': 'ep-green-cake-a4uib8bg.us-east-1.pg.koyeb.app',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
 }
 
 # Password validation
